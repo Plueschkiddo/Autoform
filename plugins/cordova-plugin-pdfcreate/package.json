@@ -1,0 +1,33 @@
+{
+  "name": "cordova-plugin-pdfcreate",
+  "version": "0.0.1",
+  "description": "An Android Cordova plugin that allows users to manipulate pdf files.",
+  "cordova": {
+    "id": "cordova-plugin-pdfcreate",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plueschkiddo/PDFCreatePlugin.git"
+  },
+  "keywords": [
+    "PDF",
+    "Editor",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Philip Goehler <goehlerphilip@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Plueschkiddo/PDFCreatePlugin/issues"
+  },
+  "homepage": "https://github.com/Plueschkiddo/PDFCreatePlugin"
+}

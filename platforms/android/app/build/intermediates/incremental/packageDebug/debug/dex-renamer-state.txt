@@ -1,0 +1,4 @@
+#Wed Apr 17 03:10:01 CEST 2019
+base.0=C\:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+renamed.0=classes.dex
+file.0=C\:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

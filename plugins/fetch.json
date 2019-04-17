@@ -94,5 +94,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-pdfcreate": {
+    "source": {
+      "type": "local",
+      "path": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\node_modules\\cordova-plugin-pdfcreate"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
