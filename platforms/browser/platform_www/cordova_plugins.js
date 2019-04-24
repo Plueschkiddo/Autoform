@@ -406,11 +406,13 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-pdfcreate/www/pdfcreateplugin.js",
-        "id": "cordova-plugin-pdfcreate.PDFCreatePlugin",
-        "pluginId": "cordova-plugin-pdfcreate",
+        "file": "plugins/cordova-pdf-generator/www/pdf.js",
+        "id": "cordova-pdf-generator.pdf",
+        "pluginId": "cordova-pdf-generator",
         "clobbers": [
-            "window.plugins.PDFCreatePlugin"
+            "cordova.plugins.pdf",
+            "pugin.pdf",
+            "pdf"
         ]
     }
 ];
@@ -429,7 +431,7 @@ module.exports.metadata =
     "cordova-plugin-media-capture": "1.4.3",
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-vibration": "2.1.6",
-    "cordova-plugin-pdfcreate": "0.0.1"
+    "cordova-pdf-generator": "2.0.8"
 }
 // BOTTOM OF METADATA
 });

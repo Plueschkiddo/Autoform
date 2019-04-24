@@ -57,7 +57,7 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"PDFCreate\"><param name=\"android-package\" value=\"com.plueschkiddo.cordova.plugin.PDFCreate\" /></feature>",
+              "xml": "<feature name=\"PDFService\"><param name=\"android-package\" value=\"com.pdf.generator.PDFGenerator\" /></feature>",
               "count": 1
             }
           ]
@@ -149,7 +149,7 @@
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.phonegap.autoform"
     },
-    "cordova-plugin-pdfcreate": {
+    "cordova-pdf-generator": {
       "PACKAGE_NAME": "com.phonegap.autoform"
     }
   },
@@ -526,11 +526,13 @@
       ]
     },
     {
-      "id": "cordova-plugin-pdfcreate.PDFCreatePlugin",
-      "file": "plugins/cordova-plugin-pdfcreate/www/pdfcreateplugin.js",
-      "pluginId": "cordova-plugin-pdfcreate",
+      "id": "cordova-pdf-generator.pdf",
+      "file": "plugins/cordova-pdf-generator/www/pdf.js",
+      "pluginId": "cordova-pdf-generator",
       "clobbers": [
-        "window.plugins.PDFCreatePlugin"
+        "cordova.plugins.pdf",
+        "pugin.pdf",
+        "pdf"
       ]
     }
   ],
@@ -546,6 +548,6 @@
     "cordova-plugin-media-capture": "1.4.3",
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-vibration": "2.1.6",
-    "cordova-plugin-pdfcreate": "0.0.1"
+    "cordova-pdf-generator": "2.0.8"
   }
 }

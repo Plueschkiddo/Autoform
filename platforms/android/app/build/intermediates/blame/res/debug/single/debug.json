@@ -1,15 +1,15 @@
 [
     {
-        "merged": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_next_item.png.flat",
-        "source": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\src\\main\\res\\drawable-hdpi\\ic_action_next_item.png"
+        "merged": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_remove.png.flat",
+        "source": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\src\\main\\res\\drawable-mdpi\\ic_action_remove.png"
     },
     {
         "merged": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_remove.png.flat",
         "source": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_remove.png"
     },
     {
-        "merged": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_remove.png.flat",
-        "source": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\src\\main\\res\\drawable-mdpi\\ic_action_remove.png"
+        "merged": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_next_item.png.flat",
+        "source": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\src\\main\\res\\drawable-hdpi\\ic_action_next_item.png"
     },
     {
         "merged": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-ldpi_screen.png.flat",

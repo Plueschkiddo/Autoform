@@ -18,11 +18,12 @@
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-vibration": {},
-      "cordova-plugin-pdfcreate": {}
+      "cordova-pdf-generator": {}
     }
   },
   "dependencies": {
     "cordova-android": "^7.0.0",
+    "cordova-pdf-generator": "2.0.8",
     "cordova-plugin-battery-status": "~1.2.4",
     "cordova-plugin-camera": "~2.4.1",
     "cordova-plugin-device": "~1.1.6",
@@ -33,7 +34,6 @@
     "cordova-plugin-inappbrowser": "~1.7.1",
     "cordova-plugin-media-capture": "~1.4.3",
     "cordova-plugin-network-information": "~1.3.3",
-    "cordova-plugin-pdfcreate": "file:../PDFCreatePlugin",
     "cordova-plugin-vibration": "~2.1.5"
   }
 }

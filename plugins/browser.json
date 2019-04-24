@@ -37,7 +37,7 @@
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     },
-    "cordova-plugin-pdfcreate": {
+    "cordova-pdf-generator": {
       "PACKAGE_NAME": "com.phonegap.autoform"
     }
   },

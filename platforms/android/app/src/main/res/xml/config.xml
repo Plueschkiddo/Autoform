@@ -35,8 +35,8 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
-    <feature name="PDFCreate">
-        <param name="android-package" value="com.plueschkiddo.cordova.plugin.PDFCreate" />
+    <feature name="PDFService">
+        <param name="android-package" value="com.pdf.generator.PDFGenerator" />
     </feature>
     <name>Autoform</name>
     <description>

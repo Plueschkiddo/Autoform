@@ -95,10 +95,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-pdfcreate": {
+  "cordova-pdf-generator": {
     "source": {
-      "type": "local",
-      "path": "C:\\Users\\User\\Documents\\phonegapprojects\\Autoform\\node_modules\\cordova-plugin-pdfcreate"
+      "type": "registry",
+      "id": "cordova-pdf-generator"
     },
     "is_top_level": true,
     "variables": {}
