@@ -1,5 +1,0 @@
-
-
-function initiate_table () {
-
-}

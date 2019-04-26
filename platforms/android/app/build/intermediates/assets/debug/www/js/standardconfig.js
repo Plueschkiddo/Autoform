@@ -100,7 +100,7 @@ GELOS = {
         {name: "Oppacher Mine. PETC", number: 6570, container: "12 x 1,0 L"},
         {name: "Oppacher Medium PETC", number: 6571, container: "12 x 1,0 L"},
         {name: "Oppacher Natur. PET", number: 6957, container: "12 x 1,0 L"},
-        {name: "Margon vital Grapefruit Zitrone", number: 6133, container: "12 x 1,0 L"},
+        {name: "Margon vital Grapefr. Zitr.", number: 6133, container: "12 x 1,0 L"},
         {name: "Almdudler Glas", number: 33402, container: "24 x 0,35 L"},
         {name: "Mio Mio Mate", number: 32844, container: "12 x 0,5 L"},
         {name: "Mio Mio Mate Banaa", number: 33804, container: "12 x 0,5 L"},
@@ -126,14 +126,29 @@ GELOS = {
         {name: "Red Bull Ds.lose", number: 3230, container: "24 x 0,25L"},
         {name: "Paulaner Spezi", number: 2971, container: "20 x 0,5 L"},
         {name: "Oppa. Schw. Johan. & Traube", number: 31040, container: "12 x 0,5 L"}
-    ]
+    ],
+
+    addObject : function (nameString, number, containerString) {
+
+    },
+
+    deleteObject : function (nameString) {
+
+    },
+
+    editObject : function () {
+
+    },
+
+    toHTMLString : function () {
+
+    }
 };
 
 
 // Storing data:
 myJSON = JSON.stringify(GELOS);
 localStorage.setItem("testJSON", myJSON);
-console.log("Hellou");
 
 // Retrieving data:
 text = localStorage.getItem("testJSON");

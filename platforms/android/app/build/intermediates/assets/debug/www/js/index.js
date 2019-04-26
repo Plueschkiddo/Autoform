@@ -63,7 +63,7 @@ var app = {
             '</body>' +
             '</html>';
 
-        pdf.fromData(pdfhtml , options)
+        pdf.fromData(app.inventoryToHTML() , options)
             .then(function(base64){
                 // To define the type of the Blob
                 var contentType = "application/pdf";
@@ -222,5 +222,152 @@ var app = {
                 );
             };
         }
+    },
+
+    inventoryToHTML : function () {
+        var i = 0;
+        var invLen = app.gelosinv.inventory.length;
+        var invALFLen = app.gelosinv.inventoryALF.length;
+        var inventoryHTML =
+            '<html>' +
+            '<head>' +
+                '<meta charset="UTF-8">' +
+                '<title>Title</title>' +
+                '<style>' +
+                    'table {font-family: arial, sans-serif;border-collapse: collapse;}' +
+                    'td {font-size: 12px;border: 1px solid #000000;text-align: left;padding: 5px;}' +
+                    'th {font-size: 13px;border: 2px solid #000000;text-align: left;padding: 5px;}' +
+                    'tr:nth-child(even){background: #dddddd;}' +
+                    '#contact {font-weight: bold;}' +
+                    '#table1 {display: inline-block;}' +
+                    '#table2 {display: inline-block;}' +
+                    '#table3 {display: inline-block;}' +
+                    '#table4 {display: inline-block;}' +
+                    '#group {border-width: 1px 1px 2px 1px;}' +
+                '</style>' +
+            '</head>' +
+                '<body>' +
+                    '<div id="contact">' +
+                    'Telefax GELOS: 03520542444 // Gelos-Annahme' +
+                    'Tel.: 0352054266 // Zettel 1.// Kd.-Nr.:180233 <br>' +
+                    'Liefertermin: Mittwoch // Spätshop bei fragen' +
+                    'bitte an ……………………………………wenden.' +
+                    '</div>' +
+                    '<div id="table1">' +
+                        '<table>' +
+                            '<tr>' +
+                                '<th>Art. Nr.</th>' +
+                                '<th>Artikelbezeichnung</th>' +
+                                '<th>Gebinde</th>' +
+                                '<th>Menge</th>' +
+                            '</tr>';
+
+        for (; i < 38 && i < invLen + invALFLen; i++){
+            if(i < app.gelosinv.inventory.length){
+                inventoryHTML += createRow(app.gelosinv.inventory[i].number,
+                                           app.gelosinv.inventory[i].name,
+                                           app.gelosinv.inventory[i].container,
+                                           i);
+            } else {
+                inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
+                                           app.gelosinv.inventoryALF[i - invLen].name,
+                                           app.gelosinv.inventoryALF[i - invLen].container,
+                                           i);
+            }
+        }
+
+        inventoryHTML +=
+                        '</table>' +
+                    '</div>'+
+                    '<div id="table2">' +
+                        '<table>' +
+                            '<tr>' +
+                                '<th>Art. Nr.</th>' +
+                                '<th>Artikelbezeichnung</th>' +
+                                '<th>Gebinde</th>' +
+                                '<th>Menge</th>' +
+                            '</tr>';
+
+        for (; i < 76 && i < invLen + invALFLen; i++){
+            if(i < app.gelosinv.inventory.length){
+                inventoryHTML += createRow(app.gelosinv.inventory[i].number,
+                    app.gelosinv.inventory[i].name,
+                    app.gelosinv.inventory[i].container,
+                    i);
+            } else {
+                inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
+                    app.gelosinv.inventoryALF[i - invLen].name,
+                    app.gelosinv.inventoryALF[i - invLen].container,
+                    i);
+            }
+        }
+
+        inventoryHTML +=
+                        '</table>' +
+                    '</div>' +
+                    '<div id="contact">' +
+                    'Telefax GELOS: 03520542444 // Ralf Sauermann Tel.: 01727904711 // Zettel 2. // Kd.-Nr.:180233 ' +
+                    'Liefertermin: Mittwoch // Spätshop bei fragen bitte an ………………………………… wenden.' +
+                    '</div>' +
+                    '<div id="table3">' +
+                        '<table>' +
+                            '<tr>' +
+                                '<th>Art. Nr.</th>' +
+                                '<th>Artikelbezeichnung</th>' +
+                                '<th>Gebinde</th>' +
+                                '<th>Menge</th>' +
+                            '</tr>';
+
+        for(; i < 106 && i < invLen + invALFLen; i++) {
+            if(i < app.gelosinv.inventory.length){
+                inventoryHTML += createRow(app.gelosinv.inventory[i].number,
+                    app.gelosinv.inventory[i].name,
+                    app.gelosinv.inventory[i].container,
+                    i);
+            } else {
+                inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
+                    app.gelosinv.inventoryALF[i - invLen].name,
+                    app.gelosinv.inventoryALF[i - invLen].container,
+                    i);
+            }
+        }
+
+        inventoryHTML +=
+                        '</table>' +
+                    '</div>' +
+                    '<div id="table4">' +
+                        '<table>' +
+                            '<tr>' +
+                                '<th>Art. Nr.</th>' +
+                                '<th>Artikelbezeichnung</th>' +
+                                '<th>Gebinde</th>' +
+                                '<th>Menge</th>' +
+                            '</tr>';
+
+        for(; i < 136 && i < invLen + invALFLen; i++) {
+            if(i < app.gelosinv.inventory.length){
+                inventoryHTML += createRow(app.gelosinv.inventory[i].number,
+                    app.gelosinv.inventory[i].name,
+                    app.gelosinv.inventory[i].container,
+                    i);
+            } else {
+                inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
+                    app.gelosinv.inventoryALF[i - invLen].name,
+                    app.gelosinv.inventoryALF[i - invLen].container,
+                    i);
+            }
+        }
+
+        for (; i < 136; i++) {
+            inventoryHTML += createEmptyRow();
+        }
+
+        inventoryHTML +=
+                        '</table>' +
+                    '</div>' +
+                '</body>' +
+            '</html>';
+
+        return inventoryHTML;
     }
 };
