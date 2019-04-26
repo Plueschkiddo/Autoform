@@ -143,7 +143,7 @@ var app = {
         }
     },
 
-    initiateTable : function() {
+    updateTable : function() {
         var inventorytable = document.getElementById("inventorytable");
         var inventorytable2 = document.getElementById("inventoryALFtable");
         var i;

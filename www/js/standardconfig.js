@@ -128,16 +128,64 @@ GELOS = {
         {name: "Oppa. Schw. Johan. & Traube", number: 31040, container: "12 x 0,5 L"}
     ],
 
-    addObject : function (nameString, number, containerString) {
-
+    addObject : function (inventoryIndex, nameString, numberInt, containerString) {
+        if (inventoryIndex === 0) {
+            this.inventory.push({name: nameString, number: numberInt, container: containerString});
+            this.inventory.sort((a, b) => (a.name > b.name) ? 1 : -1);
+        } else if (inventoryIndex === 1) {
+            this.inventoryALF.push({name: nameString, number: numberInt, container: containerString});
+            this.inventoryALF.sort((a, b) => (a.name > b.name) ? 1 : -1);
+        } else {
+            console.log("Invalid inventory index for addObject");
+        }
     },
 
-    deleteObject : function (nameString) {
-
+    deleteObject : function (inventoryIndex, nameString) {
+        if (inventoryIndex === 0) {
+            this.inventory.splice(this.getObjectIndex(0, nameString), 1);
+        } else if (inventoryIndex === 1) {
+            this.inventory.splice(this.getObjectIndex(1, nameString), 1);
+        } else {
+            console.log("Invalid inventory index for deleteObject");
+        }
     },
 
-    editObject : function () {
+    editObject : function (inventoryIndex, oldNameString, newNameString, numberInt, containerString) {
+        var articleIndex = this.getObjectIndex(inventoryIndex, oldNameString);
 
+        if (inventoryIndex === 0) {
+            this.inventory[articleIndex].name = newNameString;
+            this.inventory[articleIndex].number = numberInt;
+            this.inventory[articleIndex].container = containerString;
+        } else if (inventoryIndex === 1) {
+            this.inventoryALF[articleIndex].name = newNameString;
+            this.inventoryALF[articleIndex].number = numberInt;
+            this.inventoryALF[articleIndex].container = containerString;
+        } else {
+            console.log("Invalid Inventory index for editObject");
+        }
+    },
+
+    getObjectIndex : function (inventoryIndex, nameString) {
+        var counter = 0;
+        if (inventoryIndex === 0) {
+            for (;counter < this.inventory.length; counter++) {
+                if (this.inventory[counter].name === nameString) {
+                    return counter;
+                }
+            }
+            console.log("Couldn't find object index of " + nameString + " in inventory");
+        } else if (inventoryIndex === 1) {
+            for (;counter < this.inventoryALF.length; counter++) {
+                if (this.inventoryALF[counter].name === nameString) {
+                    return counter;
+                }
+            }
+            console.log("Couldn't find object index of " + nameString + " in inventoryALF");
+        } else {
+            console.log("Invalid inventory index for getObjectIndex");
+            return null;
+        }
     },
 
     toHTMLString : function () {

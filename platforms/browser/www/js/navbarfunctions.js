@@ -5,7 +5,7 @@ window.onload = function() {
     var homeLink = document.getElementById("update");
     homeLink.onclick = function () {
         app.validateInv();
-        app.initiateTable();
+        app.updateTable();
         return false;
     };
 

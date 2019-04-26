@@ -143,10 +143,19 @@ var app = {
         }
     },
 
-    initiateTable : function() {
+    updateTable : function() {
         var inventorytable = document.getElementById("inventorytable");
         var inventorytable2 = document.getElementById("inventoryALFtable");
         var i;
+
+        // clear tables
+        for (i = 0; i < inventorytable.rows.length; i++) {
+            inventorytable.deleteRow(i);
+        }
+
+        for (i = 0; i < inventorytable2.rows.length; i++) {
+            inventorytable2.deleteRow(i);
+        }
 
         for (i = 0; i < app.gelosinv.inventory.length; i++){
             // Insert a row at the end of the table
