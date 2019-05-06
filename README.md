@@ -1,6 +1,17 @@
-# Hello World PhoneGap Template [![bitHound Score][bithound-img]][bithound-url]
+# Autoform Formular Manager
 
-A PhoneGap Hello World template
+Ein Programm zum Erstellen und Managen von Bestelllisten.
+
+## Version-Information
+
+## 1.0.1
+
+- Label bei Ask All ist jetzt "Anzahl" anstatt "Artikelnummer"
+- Backbutton des Androidgeräts minimiert bestehende Dialoge und führt nicht mehr zum Schließen der App
+- Resetbutton gibt Benachrichtigung über das Zurücksetzten des Itemzählers
+- Printbutton gibt Benachrichtigung über Erstellen des PDF-Dokumentes
+## 1.0.0
+Livegang der App
 
 ## Usage
 

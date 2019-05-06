@@ -5,6 +5,12 @@ window.onload = function() {
     var resetLink = document.getElementById("reset");
     resetLink.onclick = function () {
         initializeIndex();
+        navigator.notification.alert(
+            'Beim nächsten Aufruf von Ask All beginnt die Abfrage von vorn.',
+            function () {},
+            'Artikelzähler zurückgesetzt',
+            'OK'
+        );
     };
 
     var addLink = document.getElementById("add");
