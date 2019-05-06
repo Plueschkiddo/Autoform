@@ -35,6 +35,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        document.addEventListener("backbutton", app.onBackKeyDown, false);
         app.validateInv();
         app.updateTable();
     },
@@ -43,6 +44,12 @@ var app = {
         var parentElement = document.getElementById(id);
 
         console.log('Received Event: ' + id);
+    },
+
+    onBackKeyDown : function () {
+        document.getElementById('id01').style.display='none';
+        document.getElementById('id02').style.display='none';
+        document.getElementById('id03').style.display='none';
     },
 
     doMagicPlease : function () {

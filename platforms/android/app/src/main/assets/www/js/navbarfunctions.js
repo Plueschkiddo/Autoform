@@ -21,5 +21,11 @@ window.onload = function() {
     var printlink = document.getElementById("print");
     printlink.onclick = function () {
         app.doMagicPlease();
-    }
+        navigator.notification.alert(
+            'Was geschehen ist, ist geschehen...',
+            function () {},
+            'PDF Dokument erstellt!',
+            'OK'
+        );
+    };
 };
