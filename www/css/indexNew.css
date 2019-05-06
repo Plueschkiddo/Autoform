@@ -26,9 +26,11 @@
 
 /* Place the navbar at the bottom of the page, and make it stick */
 .navbar {
+    display: inline-block;
     background-color: #333;
     overflow: hidden;
     position: fixed;
+    left: 0;
     bottom: 0;
     width: 100%;
 }
@@ -58,7 +60,7 @@
 
 * {box-sizing: border-box}
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=number] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -68,7 +70,7 @@ input[type=text], input[type=password] {
 }
 
 /* Add a background color when the inputs get focus */
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
     background-color: #ddd;
     outline: none;
 }
@@ -157,9 +159,36 @@ hr {
     display: table;
 }
 
+.content {
+    display: inline-block;
+}
+
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
     .cancelbtn, .signupbtn {
         width: 100%;
     }
+}
+
+.header_with_logo {
+    overflow: auto;
+}
+
+#editItemName {
+    float: left;
+    width: 80%;
+}
+
+#imagebutton {
+    background: none;
+    float: right;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+}
+
+#trashcan {
+    width: 32px;
+    height: 32px;
 }

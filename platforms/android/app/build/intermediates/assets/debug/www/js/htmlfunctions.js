@@ -9,9 +9,9 @@ function createRow (number, name, container, amount) {
 
 function createEmptyRow () {
     return  '<tr>' +
+                '<td>' + '0' +  '</td>' +
                 '<td>' + '</td>' +
                 '<td>' + '</td>' +
                 '<td>' + '</td>' +
-                '<td>' + 0 + '</td>' +
             '</tr>';
 }

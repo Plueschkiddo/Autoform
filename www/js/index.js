@@ -35,21 +35,18 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        app.validateInv();
+        app.updateTable();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     },
 
     doMagicPlease : function () {
-        var fileName = "myPdfFile.pdf";
+        var fileName = "Bestellliste.pdf";
 
         var options = {
             documentSize: 'A4',
@@ -128,19 +125,23 @@ var app = {
             navigator.notification.alert(
                 'Everything OK',
                 function () {},
-                'Validated Inventory',
+                'Bestehendes Inventar gefunden!',
                 'OK'
             );
         } else {
             app.gelosinv = GELOS;
             window.localStorage.setItem('GELOS', JSON.stringify(GELOS));
             navigator.notification.alert(
-                'Initiated standard Inventory',
+                'Kein Inventar gefunden. Standardinventar angelegt!',
                 function () {},
                 'Validated Inventory',
                 'OK'
             );
         }
+    },
+
+    storeInv : function () {
+        window.localStorage.setItem('GELOS', JSON.stringify(app.gelosinv));
     },
 
     updateTable : function() {
@@ -149,11 +150,11 @@ var app = {
         var i;
 
         // clear tables
-        for (i = 0; i < inventorytable.rows.length; i++) {
+        for (i = inventorytable.rows.length - 1; i >= 0; i--) {
             inventorytable.deleteRow(i);
         }
 
-        for (i = 0; i < inventorytable2.rows.length; i++) {
+        for (i = inventorytable2.rows.length - 1; i >= 0; i--) {
             inventorytable2.deleteRow(i);
         }
 
@@ -161,23 +162,23 @@ var app = {
             // Insert a row at the end of the table
             var newRow = inventorytable.insertRow(-1);
 
+            // var numberCell = newRow.insertCell(0);
             // Insert a cell in the row at index 0
-            var numberCell = newRow.insertCell(0);
+            var containerCell = newRow.insertCell(0);
             var nameCell = newRow.insertCell(1);
-            var containerCell = newRow.insertCell(2);
-            // var amountCell = newRow.insertCell(3);
+            var amountCell = newRow.insertCell(2);
 
             // Append a text node to the cell
             var nameText = document.createTextNode(app.gelosinv.inventory[i].name);
             nameCell.appendChild(nameText);
 
-            if(app.gelosinv.inventory[i].number){
-                var numberText = document.createTextNode(app.gelosinv.inventory[i].number.toString());
-                numberCell.appendChild(numberText);
-            }
-            else {
-                numberCell.appendChild(document.createTextNode(""));
-            }
+            // if(app.gelosinv.inventory[i].number){
+            //     var numberText = document.createTextNode(app.gelosinv.inventory[i].number.toString());
+            //     numberCell.appendChild(numberText);
+            // }
+            // else {
+            //     numberCell.appendChild(document.createTextNode(""));
+            // }
 
             if(app.gelosinv.inventory[i].container) {
                 var containerText = document.createTextNode(app.gelosinv.inventory[i].container);
@@ -186,8 +187,20 @@ var app = {
                 containerCell.appendChild(document.createTextNode(""));
             }
 
-            // var amountText = document.createTextNode(app.gelosinv.inventory[i]);
-            // amountCell.appendChild(amountText);
+            var amountText = document.createTextNode(app.gelosinv.inventory[i].amount);
+            amountCell.appendChild(amountText);
+
+            newRow.onclick = function(){
+                var invObjIndex = getObjectIndex(0, this.cells[1].innerText);
+
+                document.getElementById('editItemName').innerText = this.cells[1].innerText;
+                document.getElementById('frm2').elements[1].value = app.gelosinv.inventory[invObjIndex].name;
+                document.getElementById('frm2').elements[2].value = app.gelosinv.inventory[invObjIndex].number;
+                document.getElementById('frm2').elements[3].value = app.gelosinv.inventory[invObjIndex].container;
+                document.getElementById('frm2').elements[4].value = app.gelosinv.inventory[invObjIndex].amount;
+                document.getElementById('inventory_type').value = 'alcohol';
+                document.getElementById('id02').style.display='block';
+            };
         }
 
         for (i = 0; i < app.gelosinv.inventoryALF.length; i++){
@@ -195,22 +208,22 @@ var app = {
             var newRow2 = inventorytable2.insertRow(-1);
 
             // Insert a cell in the row at index 0
-            var numberCell2 = newRow2.insertCell(0);
+            // var numberCell2 = newRow2.insertCell(0);
+            var containerCell2 = newRow2.insertCell(0);
             var nameCell2 = newRow2.insertCell(1);
-            var containerCell2 = newRow2.insertCell(2);
-            // var amountCell2 = newRow2.insertCell(3);
+            var amountCell2 = newRow2.insertCell(2);
 
             // Append a text node to the cell
             var nameText2 = document.createTextNode(app.gelosinv.inventoryALF[i].name);
             nameCell2.appendChild(nameText2);
 
-            if(app.gelosinv.inventoryALF[i].number){
-                var numberText2 = document.createTextNode(app.gelosinv.inventoryALF[i].number.toString());
-                numberCell2.appendChild(numberText2);
-            }
-            else {
-                numberCell2.appendChild(document.createTextNode(""));
-            }
+            // if(app.gelosinv.inventoryALF[i].number){
+            //     var numberText2 = document.createTextNode(app.gelosinv.inventoryALF[i].number.toString());
+            //     numberCell2.appendChild(numberText2);
+            // }
+            // else {
+            //     numberCell2.appendChild(document.createTextNode(""));
+            // }
 
             if(app.gelosinv.inventoryALF[i].container) {
                 var containerText2 = document.createTextNode(app.gelosinv.inventoryALF[i].container);
@@ -219,16 +232,28 @@ var app = {
                 containerCell2.appendChild(document.createTextNode(""));
             }
 
-            // var amountText2 = document.createTextNode(app.gelosinvALF.inventory[i]);
-            // amountCell2.appendChild(amountText2);
+            var amountText2 = document.createTextNode(app.gelosinv.inventoryALF[i].amount);
+            amountCell2.appendChild(amountText2);
+
+            // newRow2.onclick = function(){
+            //     navigator.notification.alert(
+            //         this.cells[1].innerText,
+            //         function(){},
+            //         "Table Row Clicked!",
+            //         "OK"
+            //     );
+            // };
 
             newRow2.onclick = function(){
-                navigator.notification.alert(
-                    this.cells[1].innerText,
-                    function(){},
-                    "Table Row Clicked!",
-                    "OK"
-                );
+                var invObjIndex = getObjectIndex(1, this.cells[1].innerText);
+
+                document.getElementById('editItemName').innerText = this.cells[1].innerText;
+                document.getElementById('frm2').elements[1].value = app.gelosinv.inventoryALF[invObjIndex].name;
+                document.getElementById('frm2').elements[2].value = app.gelosinv.inventoryALF[invObjIndex].number;
+                document.getElementById('frm2').elements[3].value = app.gelosinv.inventoryALF[invObjIndex].container;
+                document.getElementById('frm2').elements[4].value = app.gelosinv.inventoryALF[invObjIndex].amount;
+                document.getElementById('inventory_type').value = 'nonalcohol';
+                document.getElementById('id02').style.display='block';
             };
         }
     },
@@ -276,12 +301,12 @@ var app = {
                 inventoryHTML += createRow(app.gelosinv.inventory[i].number,
                                            app.gelosinv.inventory[i].name,
                                            app.gelosinv.inventory[i].container,
-                                           i);
+                                           app.gelosinv.inventory[i].amount);
             } else {
                 inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
                                            app.gelosinv.inventoryALF[i - invLen].name,
                                            app.gelosinv.inventoryALF[i - invLen].container,
-                                           i);
+                                           app.gelosinv.inventoryALF[i - invLen].amount);
             }
         }
 
@@ -302,12 +327,12 @@ var app = {
                 inventoryHTML += createRow(app.gelosinv.inventory[i].number,
                     app.gelosinv.inventory[i].name,
                     app.gelosinv.inventory[i].container,
-                    i);
+                    app.gelosinv.inventory[i].amount);
             } else {
                 inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
                     app.gelosinv.inventoryALF[i - invLen].name,
                     app.gelosinv.inventoryALF[i - invLen].container,
-                    i);
+                    app.gelosinv.inventoryALF[i - invLen].amount);
             }
         }
 
@@ -315,7 +340,7 @@ var app = {
                         '</table>' +
                     '</div>' +
                     '<div id="contact">' +
-                    'Telefax GELOS: 03520542444 // Ralf Sauermann Tel.: 01727904711 // Zettel 2. // Kd.-Nr.:180233 ' +
+                    'Telefax GELOS: 03520542444 // Kevin Ulma Tel.: 015207947767 // Zettel 2. // Kd.-Nr.:180233 ' +
                     'Liefertermin: Mittwoch // Spätshop bei fragen bitte an ………………………………… wenden.' +
                     '</div>' +
                     '<div id="table3">' +
@@ -332,12 +357,12 @@ var app = {
                 inventoryHTML += createRow(app.gelosinv.inventory[i].number,
                     app.gelosinv.inventory[i].name,
                     app.gelosinv.inventory[i].container,
-                    i);
+                    app.gelosinv.inventory[i].amount);
             } else {
                 inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
                     app.gelosinv.inventoryALF[i - invLen].name,
                     app.gelosinv.inventoryALF[i - invLen].container,
-                    i);
+                    app.gelosinv.inventoryALF[i - invLen].amount);
             }
         }
 
@@ -358,12 +383,12 @@ var app = {
                 inventoryHTML += createRow(app.gelosinv.inventory[i].number,
                     app.gelosinv.inventory[i].name,
                     app.gelosinv.inventory[i].container,
-                    i);
+                    app.gelosinv.inventory[i].amount);
             } else {
                 inventoryHTML += createRow(app.gelosinv.inventoryALF[i - invLen].number,
                     app.gelosinv.inventoryALF[i - invLen].name,
                     app.gelosinv.inventoryALF[i - invLen].container,
-                    i);
+                    app.gelosinv.inventoryALF[i - invLen].amount);
             }
         }
 

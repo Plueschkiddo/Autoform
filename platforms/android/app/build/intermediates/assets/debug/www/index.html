@@ -37,33 +37,89 @@
     * Create your own at http://cspisawesome.com
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
     <link rel="stylesheet" type="text/css" href="css/indexNew.css" />
+</head>
     <title>Hello World</title>
 </head>
 
 <body>
-    <!-- Button to open the modal -->
-    <button onclick="document.getElementById('id01').style.display='block'">Hinzufügen</button>
-
     <!-- The Modal (contains the Sign Up form) -->
     <div id="id01" class="modal">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <form class="modal-content">
+        <form id="frm1" class="modal-content">
             <div class="container">
                 <h2>Artikel hinzufügen</h2>
                 <label for="name"><b>Name</b></label>
                 <input type="text" placeholder="Artikelname eingeben" name="name" required>
 
                 <label for="number"><b>Artikelnummer</b></label>
-                <input type="text" placeholder="Artikelnummer eingeben" name="number" required>
+                <input type="number" placeholder="Artikelnummer eingeben" name="number" required>
 
                 <label for="container"><b>Gebinde</b></label>
                 <input type="text" placeholder="Gebindeeinheit eingeben" name="container" required>
 
+                <select name="invetory_type">
+                    <option value="alcohol">Alkoholische Getränke</option>
+                    <option value="nonalcohol">Alkoholfreie Getränke</option>
+                </select>
+
                 <div class="clearfix">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <button type="submit" class="signup signupbtn">OK</button>
+                    <button type="button" onclick="addDialogueConfirm()" class="signup signupbtn">OK</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="id02" class="modal">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form id="frm2" class="modal-content">
+            <div class="container">
+                <div class="header_with_logo">
+                    <h2 id="editItemName">Artikel editieren</h2>
+                    <button type="button" id="imagebutton" onclick="openDeleteDialogue()">
+                        <img id="trashcan" src="trash-alt-regular.svg" alt="Kiwi standing on oval">
+                    </button>
+                </div>
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Artikelname eingeben" name="name" required>
+
+                <label for="number"><b>Artikelnummer</b></label>
+                <input type="number" placeholder="Artikelnummer eingeben" name="number" required>
+
+                <label for="container"><b>Gebinde</b></label>
+                <input type="text" placeholder="Gebindeeinheit eingeben" name="container" required>
+
+                <label for="amount"><b>Anzahl</b></label>
+                <input type="text" placeholder="Anzahl eingeben" name="amount" required>
+
+                <select id="inventory_type" name="inventory_type">
+                    <option value="alcohol">Alkoholische Getränke</option>
+                    <option value="nonalcohol">Alkoholfreie Getränke</option>
+                </select>
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="button" onclick="editDialoqueConfirm()" class="signup signupbtn">OK</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="id03" class="modal">
+        <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form id="frm3" class="modal-content">
+            <div class="container">
+                <h2>Blitzrunde!</h2>
+                <label><b>Letzte Eingabe</b></label>
+                <p id="lastinput"></p>
+                <label><b>Name</b></label>
+                <p id="queryItemName"></p>
+
+                <label for="number"><b>Artikelnummer</b></label>
+                <input id="queryItemCount" type="number" onkeyup="valueChanged()" placeholder="Artikelnummer eingeben" name="number" required>
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="button" onclick="queryDialogueConfirm()" class="signup signupbtn">OK</button>
                 </div>
             </div>
         </form>
@@ -89,16 +145,18 @@
         </div>
     </div>
     <div class="navbar">
-        <a id="update" href="javascript:void(0)">Update</a>
-        <a id="add" href="javascript:void(0)">Hinzufügen</a>
-        <a id="contact" href="javascript:void(0)">Contact</a>
+        <a id="reset" href="javascript:void(0)">Reset</a>
+        <a id="add" href="javascript:void(0)">Add</a>
+        <a id="askall" href="javascript:void(0)">Ask All</a>
+        <a id="print" href="javascript:void(0)">Print</a>
     </div>
-    <button type="button" onclick="app.doMagicPlease()">Click Me!</button>
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/standardconfig.js"></script>
+    <script type="text/javascript" src="js/inventoryfunctions.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/formfunctions.js"></script>
     <script type="text/javascript" src="js/navbarfunctions.js"></script>
     <script type="text/javascript" src="js/accordion.js"></script>
-    <script type="text/javascript" src="js/standardconfig.js"></script>
     <script type="text/javascript" src="js/htmlfunctions.js"></script>
     <script type="text/javascript">
         app.initialize();

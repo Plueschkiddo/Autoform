@@ -2,32 +2,24 @@
 // Wait for the page to load first
 window.onload = function() {
 
-    var homeLink = document.getElementById("update");
-    homeLink.onclick = function () {
-        app.validateInv();
-        app.updateTable();
-        return false;
+    var resetLink = document.getElementById("reset");
+    resetLink.onclick = function () {
+        initializeIndex();
     };
 
-    var newsLink = document.getElementById("add");
-    newsLink.onclick = function () {
-        navigator.notification.alert(
-            'Add Option was clicked',
-            function () {},
-            'Something happened!',
-            'OK'
-        );
-        return false;
+    var addLink = document.getElementById("add");
+    addLink.onclick = function () {
+        document.getElementById('id01').style.display = 'block';
     };
 
-    var contactLink = document.getElementById("contact");
-    contactLink.onclick = function () {
-        navigator.notification.alert(
-            'Contact Option was clicked',
-            function () {},
-            'Something happened!',
-            'OK'
-        );
-        return false;
+    var askallLink = document.getElementById("askall");
+    askallLink.onclick = function () {
+        document.getElementById('queryItemName').innerText = getNextItem();
+        document.getElementById('id03').style.display = 'block';
     };
+
+    var printlink = document.getElementById("print");
+    printlink.onclick = function () {
+        app.doMagicPlease();
+    }
 };
