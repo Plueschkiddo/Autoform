@@ -161,6 +161,7 @@ hr {
 
 .content {
     display: inline-block;
+    margin-bottom: 50px;
 }
 
 /* Change styles for cancel button and signup button on extra small screens */

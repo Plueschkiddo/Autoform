@@ -4,8 +4,10 @@ Ein Programm zum Erstellen und Managen von Bestelllisten.
 
 ## Version-Information
 
+## 1.0.2
+- Das Inventar wird nun nach jeder Änderung automatisch alphabetisch geordnet
+- Ein Fehler wurde behoben, bei dem das Menü über den Listeneinträgen angezeigt wurde
 ## 1.0.1
-
 - Label bei Ask All ist jetzt "Anzahl" anstatt "Artikelnummer"
 - Backbutton des Androidgeräts minimiert bestehende Dialoge und führt nicht mehr zum Schließen der App
 - Resetbutton gibt Benachrichtigung über das Zurücksetzten des Itemzählers

@@ -1,13 +1,12 @@
 function addObject (inventoryIndex, nameString, numberInt, containerString) {
     if (inventoryIndex === 0) {
         app.gelosinv.inventory.push({name: nameString, number: numberInt, container: containerString, amount: 0});
-        app.gelosinv.inventory.sort((a, b) => (a.name > b.name) ? 1 : -1);
     } else if (inventoryIndex === 1) {
         app.gelosinv.inventoryALF.push({name: nameString, number: numberInt, container: containerString, amount: 0});
-        app.gelosinv.inventoryALF.sort((a, b) => (a.name > b.name) ? 1 : -1);
     } else {
         console.log("Invalid inventory index for addObject");
     }
+    sortInventory();
     app.updateTable();
     app.storeInv();
 }
@@ -43,6 +42,7 @@ function editObject (inventoryIndex, oldNameString, newNameString, numberInt, co
     } else {
         console.log("Invalid Inventory index for editObject");
     }
+    sortInventory();
     app.updateTable();
     app.storeInv();
 }
@@ -121,3 +121,8 @@ function editItemAmount (nameString, amount) {
     app.updateTable();
     app.storeInv();
 }
+
+function sortInventory() {
+    app.gelosinv.inventory.sort((a, b) => (a.name > b.name) ? 1 : -1);
+    app.gelosinv.inventoryALF.sort((a, b) => (a.name > b.name) ? 1 : -1);
+};

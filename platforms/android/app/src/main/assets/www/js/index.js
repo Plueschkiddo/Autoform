@@ -37,6 +37,7 @@ var app = {
         app.receivedEvent('deviceready');
         document.addEventListener("backbutton", app.onBackKeyDown, false);
         app.validateInv();
+        sortInventory();
         app.updateTable();
     },
     // Update DOM on a Received Event
